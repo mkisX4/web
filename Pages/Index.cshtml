@@ -1,16 +1,35 @@
 ﻿@page
 @model IndexModel
 @using Web.Models;
-@{
-    DataBase T1 = new DataBase();
-    T1.Number = "C-404";
-    T1.Room = "2-666";
-    T1.Time = "Субъективно";
-    T1.Window = "4";
-    T1.Id = 1;
-    Model.Tickets.Add(T1);
+@using System.Linq;
+@functions
+{
+    public object Generator()
+    {
+        DataBase Temp = new DataBase();
+        int NM = Model.Tickets.Count;
+        if (NM < 100 && NM >= 10)
+        {
+            Temp.Number = "C-0" + NM;
+        }
+        else if (NM < 10)
+        {
+            Temp.Number = "C-00" + NM;
+        }
+        else Temp.Number = "C-" + NM;
+        Temp.Room = "2-666";
+        TimeOnly CT = TimeOnly.FromDateTime(DateTime.Now);
+        if (CT > (Model.Tickets[Model.Tickets.Count - 1].Time.AddMinutes(5)))
+        {
+            Temp.Time = CT;
+        }
+        else Temp.Time = CT.AddMinutes((Model.Tickets[Model.Tickets.Count - 1].Time.AddMinutes(5).Minute) - CT.Minute);
+        Temp.Window = "4";
+        Temp.Id = 1;
+        Model.Tickets.Add(Temp);
+        return null;
+    }
 }
-
 <!DOCTYPE html>
 <html lang="">
 <head>
@@ -269,13 +288,13 @@
                 <h4><b>Вы записаны!</b></h4>
             </div>
             <div class="w3-container w3-animate-top" align="center">
-                <h2><b>Ваш номер в очереди:</b></h2><br />
-                <h1><b>@Model.Tickets[0].Number</b></h1><br />
+                <h2><b>Ваш номер в очереди:@Generator()</b></h2><br />
+                <h1><b>@Model.Tickets[Model.Tickets.Count-1].Number</b></h1><br />
             </div>
             <div class="w3-container" align="center">
                 <div class="w3-bar w3-margin-top" style="width: 25vw">
-                    <div class="w3-bar-item w3-round w3-padding-8 w3-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br />@Model.Tickets[0].Window</b></div>
-                    <div class="w3-bar-item w3-round w3-padding-8 w3-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br />@Model.Tickets[0].Room</b></div>
+                    <div class="w3-bar-item w3-round w3-padding-8 w3-light-grey w3-block w3-round-large w3-left" style="width: 48%">Кабинет:<br />@Model.Tickets[Model.Tickets.Count-1].Window</b></div>
+                    <div class="w3-bar-item w3-round w3-padding-8 w3-light-grey w3-block w3-round-large w3-right" style="width: 48%">Окно:<br />@Model.Tickets[Model.Tickets.Count-1].Room</b></div>
                 </div>
             </div>
             <div class="w3-container text-dark-grey" align="center">

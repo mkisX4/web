@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public string Number { get; set; }
         public string Room { get; set; } 
-        public string Time { get; set; } 
+        public TimeOnly Time { get; set; } 
         public string Window { get; set; }
     }
 }
