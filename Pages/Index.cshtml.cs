@@ -1,16 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using Web.Models;
 
 namespace Web.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        private readonly ApplicationContext context;
+
+        public List<DataBase> Tickets { get; set; }
+        public IndexModel(ApplicationContext db)
         {
-            _logger = logger;
+            context = db;
         }
-
+        public void OnGet()
+        {
+            Tickets = context.Tickets.AsNoTracking().ToList();
+        }
     }
 }

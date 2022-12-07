@@ -82,21 +82,6 @@
 			  С собой иметь: <b id="docs"> </b></p>
 			</h1>
 			</div>-->
-    <script>
-        fetch("../ticket.json")
-            .then((response) => response.json())
-            .then((data) => {
-                for (var i = 0; i < data.items.length; i++) {
-                    let vnumber = data[i].number;
-                    let vroom = data[i].room;
-                    let vtime = data[i].time;
-                    let vwindow = data[i].window;
-                    document.querySelector("#number").innerHTML += ${ vnumber };
-                    document.querySelector("#room").innerHTML += ${ vroom };
-                    document.querySelector("#time").innerHTML += ${ vtime };
-                    document.querySelector("#window").innerHTML += ${ vwindow };
-                }
-            });
-    </script>
+    <script src="../js/ticket_fetcher.js"></script>
   </body>
 </html>

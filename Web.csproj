@@ -6,4 +6,26 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\flickity\flickity.pkgd.min.js" />
+    <None Include="wwwroot\img\icons\dstu.svg" />
+    <None Include="wwwroot\img\icons\feather.svg" />
+    <None Include="wwwroot\img\icons\file-text.svg" />
+    <None Include="wwwroot\img\icons\grid.svg" />
+    <None Include="wwwroot\img\icons\monitor.svg" />
+    <None Include="wwwroot\img\icons\paperclip.svg" />
+    <None Include="wwwroot\img\icons\search.svg" />
+    <None Include="wwwroot\img\icons\shuffle.svg" />
+    <None Include="wwwroot\img\icons\star.svg" />
+    <None Include="wwwroot\img\icons\user.svg" />
+    <None Include="wwwroot\js\tab_opener.js" />
+    <None Include="wwwroot\js\ticket_fetcher.js" />
+    <None Include="wwwroot\user\ticketQR.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+  </ItemGroup>
+
 </Project>
