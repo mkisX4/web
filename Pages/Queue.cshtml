@@ -1,0 +1,49 @@
+﻿@page
+@model Web.Pages.Shared.QueueModel
+@{
+    ViewData["Title"] = "Queue";
+}
+    <!--main queue tab-->
+    <div id="Queue" class="tab">
+      <div
+        class="userspace w3-center"
+        style="height: 100vh; position: relative"
+      >
+        <div class="w3-container w3-animate-top" align="center">
+          <h4><b>Вы записаны!</b></h4>
+        </div>
+        <div class="w3-container w3-animate-top" align="center">
+          <h2><b>Ваш номер в очереди:</b></h2>
+        </div>
+        <div class="w3-container w3-animate-top" align="center">
+          <h1><b id="number"></b></h1>
+        </div>
+        <div class="w3-row">
+          <div class="w3-third w3-container w3-green">
+            Кабинет: <br />
+            <h2><b id="room"></b></h2>
+          </div>
+          <div class="w3-third w3-container">
+            Время: <br />
+            <h2><b id="time"> </b></h2>
+          </div>
+        </div>
+        <img src="../ticketQR.svg" alt="QR" width="200" height="200" />
+        <div class="w3-container w3-margin-top w3-margin-bottom">
+          <button
+            class="w3-button w3-padding-16 w3-ios-light-grey w3-margin-top w3-block"
+            name="button"
+            onclick="location.href='index.html';"
+          >
+            <b>Отменить запись</b>
+          </button>
+          <button
+            class="w3-button w3-padding-16 w3-ios-light-grey w3-margin-top w3-block"
+            name="button"
+            onclick="location.href='index.html';"
+          >
+            <b>Оценить</b>
+          </button>
+        </div>
+      </div>
+    </div>
